@@ -1,0 +1,46 @@
+       1. MySQL database
+
+
+       2.
+           a.)   IN 
+
+            DELIMITER //
+
+            CREATe PROCEDURE GetOfficeByCountry(IN countryName USA(255))
+            BEGIN
+                     SELECT *
+                     FROM offices
+                     WHERE country = countryName;
+            END //
+
+            DELIMITER ;
+ 
+
+            b.) OUT
+ 
+
+             DELIMITER //
+
+             CREATE PROCEDURE GetOrderCountryByStatus(IN orderStatus USA(25), OUT total INT)
+             BEGIN
+
+                    SELECT COUNT(orderNumber)
+                    INTO total
+                    FROM orders
+                    WHERE status = orderStatus;
+
+ 
+             END //
+          
+             DELIMITER ;
+
+            c.) INOUT
+
+             DELIMITER //
+
+             CREATE PROCEDURE SetCounter( INOUT counter INT, IN inc INT)
+             BEGIN
+                      SET counter = counter + inc;
+             ENDS //
+
+             DELIMITER //
